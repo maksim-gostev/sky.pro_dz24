@@ -22,14 +22,19 @@ class Perform_query(Resource):
         except ValidationError as e:
             return jsonify(e.messages), 400
 
+        filename = os.path.join(DATA_DIR, req_json["file_name"])
+
+        if not os.path.exists(filename):
+            return 'Фаила не существует', 400
+
         result = None
         for query in req_json["queryes"]:
             result = execute(
                 cmd=query["cmd"],
                 value=query["value"],
-                file_name=req_json["file_name"],
+                file_name=filename,
                 data=result
             )
-        return jsonify(result)
+        return result
 
 

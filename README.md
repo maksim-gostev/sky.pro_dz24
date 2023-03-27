@@ -7,8 +7,8 @@
 "queryes":[
 {
     "cmd": "filter",
-    "value": "POST",
-            },
-]
+    "value": "GET"
+            }
+],
 "file_name": "apache_logs.txt"
 }

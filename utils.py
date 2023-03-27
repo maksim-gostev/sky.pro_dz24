@@ -7,21 +7,21 @@ def get_file(filename):
         for line in file:
             yield line
 
-def regex_query(value: str, data: Iterable):
+def regex_query(value: str, data: Iterable) -> Iterable[str]:
     regex = re.compile(value)
     return filter(lambda v: re.search(regex, v), data)
 
 
 
-def filter_query(value: str, data: Iterable) -> list:
-    return list(filter(lambda v: value in v, data))
+def filter_query(value: str, data: Iterable):
+    return filter(lambda v: value in v, data)
 
 
 def map_query(value: str, data: Iterable):
     return map(lambda v: v.split()[int(value)], data)
 
 
-def unique(data):
+def unique(value: str, data):
     return set(data)
 
 
