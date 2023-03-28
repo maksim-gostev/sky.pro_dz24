@@ -2,7 +2,7 @@ from typing import Optional, Iterable, List
 import re
 
 
-def get_file(filename):
+def get_file(filename) -> str:
     with open(filename) as file:
         for line in file:
             yield line
@@ -13,24 +13,24 @@ def regex_query(value: str, data: Iterable) -> Iterable[str]:
 
 
 
-def filter_query(value: str, data: Iterable):
+def filter_query(value: str, data: Iterable) -> Iterable[str]:
     return filter(lambda v: value in v, data)
 
 
-def map_query(value: str, data: Iterable):
+def map_query(value: str, data: Iterable) -> Iterable[str]:
     return map(lambda v: v.split()[int(value)], data)
 
 
-def unique(value: str, data):
+def unique(value: str, data: Iterable) -> set:
     return set(data)
 
 
-def sort_query(value: str, data: Iterable):
+def sort_query(value: str, data: Iterable) -> Iterable[str]:
     reverse: bool = value == 'desc'
     return sorted(data, reverse=reverse)
 
 
-def limit_query(value: str, data: Iterable):
+def limit_query(value: str, data: Iterable) ->List:
     return list(data[: int(value)])
 
 
