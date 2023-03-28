@@ -1,4 +1,4 @@
-from typing import Optional, Iterable, List
+from typing import Optional, Iterable, List, Any
 import re
 
 
@@ -7,10 +7,10 @@ def get_file(filename) -> Iterable[str]:
         for line in file:
             yield line
 
+
 def regex_query(value: str, data: Iterable) -> Iterable[str]:
     regex = re.compile(value)
     return filter(lambda v: re.search(regex, v), data)
-
 
 
 def filter_query(value: str, data: Iterable) -> Iterable[str]:
@@ -30,7 +30,7 @@ def sort_query(value: str, data: Iterable) -> Iterable[str]:
     return sorted(data, reverse=reverse)
 
 
-def limit_query(value: str, data: Iterable) ->List[Iterable[str]]:
+def limit_query(value: str, data: Iterable) -> List[Iterable[Any]]:
     return list(data[: int(value)])
 
 
@@ -44,7 +44,7 @@ CMDS = {
 }
 
 
-def execute(cmd: str, value: str, file_name: str, data: Optional[Iterable[str]]) -> List[str]:
+def execute(cmd: str, value: str, file_name: str, data: Optional[Iterable[str]]) -> Iterable[Iterable[Any]]:
     if data is None:
         prepared_data: Iterable[str] = get_file(file_name)
     else:
