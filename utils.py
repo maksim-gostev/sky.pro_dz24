@@ -2,7 +2,7 @@ from typing import Optional, Iterable, List, Any
 import re
 
 
-def get_file(filename) -> Iterable[str]:
+def get_file(filename: str) -> Iterable[str]:
     with open(filename) as file:
         for line in file:
             yield line
@@ -30,7 +30,7 @@ def sort_query(value: str, data: Iterable) -> Iterable[str]:
     return sorted(data, reverse=reverse)
 
 
-def limit_query(value: str, data: Iterable) -> List[Iterable[Any]]:
+def limit_query(value: str, data: Any) -> List:
     return list(data[: int(value)])
 
 
