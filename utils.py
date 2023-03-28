@@ -2,7 +2,7 @@ from typing import Optional, Iterable, List
 import re
 
 
-def get_file(filename) -> str:
+def get_file(filename) -> Iterable[str]:
     with open(filename) as file:
         for line in file:
             yield line
