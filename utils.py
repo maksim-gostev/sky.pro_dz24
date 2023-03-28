@@ -30,7 +30,7 @@ def sort_query(value: str, data: Iterable) -> Iterable[str]:
     return sorted(data, reverse=reverse)
 
 
-def limit_query(value: str, data: Iterable) ->List:
+def limit_query(value: str, data: Iterable) ->List[Iterable[str]]:
     return list(data[: int(value)])
 
 
